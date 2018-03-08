@@ -7,13 +7,13 @@
 <h2> please login </h2>
 <div>
   <div>
-    User Name : <input type="text" name ="username" />
+    User Name : <input [(ngModel)]="user.username" type="text" name ="username" />
   </div>
   <div>
-    password  : <input type="password" name ="password" />
+    password  : <input [(ngModel)]="user.password" type="password" name ="password" />
   </div>
   <div>
-    <input type="button" name ="login" value="login"  />
+    <input type="button" name ="login" value="login"  (click)="authenticate()" />
   </div>
 </div>
 
