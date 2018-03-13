@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {User} from '../user/user';
 import { AuthService } from '../api/auth.service';
 
@@ -7,24 +7,25 @@ import { AuthService } from '../api/auth.service';
   templateUrl: '../auth/auth.component.html',
   styleUrls: ['../auth/auth.component.css']
 })
-export class AuthComponent implements OnInit {
-  title : string;
-  title = 'RR Inventory';
-  user : User;
 
-  user = {
-    username: "";
-    password: "";
+export class AuthComponent implements OnInit {
+  //title : string;
+  title = 'RR Inventory';
+  authenticatedData = '';
+  
+  user : User = {
+    username: "",
+    password: ""
   };
 
-  constructor(private authService : AuthService) {
+  constructor (private authService : AuthService) {
   }
 
-  ngOnInit() {
+  ngOnInit () {
   }
 
-  authenticate(){
-    this.title = this.authService.getAuthenticate(this.user).observe();
-    console.log(this.title);
+  authenticate () {
+    this.authService.getAuthenticate(this.user).subscribe(res => console.log(res.message));
+    //console.log(this.authenticatedData);
   }
 }

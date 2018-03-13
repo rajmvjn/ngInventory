@@ -7,14 +7,21 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : '*'})
 };
+
+interface userinfo{
+
+}
 
 @Injectable()
 export class AuthService {
 
   constructor(private http: HttpClient) { }
-  getAuthenticate: Observable<{}> (user : User){
-    return this.http.post('http://localhost:3003/api/authenticate', user, httpOptions);
+  getAuthenticate (user : User) : Observable <any> {
+    return this.http.get <any> ('http://localhost:3003/api/authenticate', httpOptions);
+    //return JSON.parse("{status:1}");
   }
+
+  
 }
