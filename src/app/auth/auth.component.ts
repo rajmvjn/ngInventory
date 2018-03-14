@@ -9,13 +9,11 @@ import { AuthService } from '../api/auth.service';
 })
 
 export class AuthComponent implements OnInit {
-  //title : string;
-  title = 'RR Inventory';
+  title  = 'RR Inventory';
   authenticatedData = '';
-  
   user : User = {
-    username: "",
-    password: ""
+    uname: "",
+    pwd: ""
   };
 
   constructor (private authService : AuthService) {
@@ -25,7 +23,11 @@ export class AuthComponent implements OnInit {
   }
 
   authenticate () {
-    this.authService.getAuthenticate(this.user).subscribe(res => console.log(res.message));
-    //console.log(this.authenticatedData);
+    console.log(this.user);
+    this.authService.getAuthenticate(this.user)
+      .subscribe(res => console.log(res.message),
+                                                          (error) => console.log(error),
+                                                          () => console.log('auth completed'));
+
   }
 }
