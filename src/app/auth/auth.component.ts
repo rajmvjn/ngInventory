@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../user/user';
 import { AuthService } from '../api/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,19 +16,22 @@ export class AuthComponent implements OnInit {
     uname: "",
     pwd: ""
   };
-
-  constructor (private authService : AuthService) {
+  //router = Router;
+  constructor (private authService : AuthService, private router: Router) {
   }
 
   ngOnInit () {
   }
 
   authenticate () {
+    
+    //this.router.navigateByUrl('/dashboard');
+    this.router.navigate(['dashboard']);
     console.log(this.user);
-    this.authService.getAuthenticate(this.user)
+    /*this.authService.getAuthenticate(this.user)
       .subscribe(res => console.log(res.message),
                                                           (error) => console.log(error),
-                                                          () => console.log('auth completed'));
+                                                          () => console.log('auth completed'));*/
 
   }
 }

@@ -5,16 +5,20 @@ import { HttpClientModule }    from '@angular/common/http';
 
 import { AuthService } from './api/auth.service';
 import { AuthComponent } from './auth/auth.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
-    AuthComponent
+    AuthComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [AuthService],
   bootstrap: [AuthComponent]
